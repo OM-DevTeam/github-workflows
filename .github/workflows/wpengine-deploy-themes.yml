@@ -1,4 +1,4 @@
-name: Deploy plugins to WP Engine
+name: Deploy themes to WP Engine
 
 on:
   workflow_call:
