@@ -63,4 +63,5 @@ jobs:
           --exclude /.stylelintrc.json \
           --exclude /package.json \
           --exclude /package-lock.json \
+          --exclude /patches/ \
           ./ "${{ inputs.env_install }}@${{ inputs.env_ssh_host }}:/sites/${{ inputs.env_install }}/"
