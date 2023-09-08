@@ -56,5 +56,6 @@ jobs:
           --exclude /.stylelintrc.json \
           --exclude /package.json \
           --exclude /package-lock.json \
+          --exclude /patches/ \
           --filter=':- /.gitignore' \
           ./ "${{ secrets.flywheel_ssh_user }}+${{ inputs.env_site_slug }}@${{ inputs.env_ssh_host }}:/www"
