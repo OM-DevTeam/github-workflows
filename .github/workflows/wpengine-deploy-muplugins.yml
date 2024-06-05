@@ -50,6 +50,15 @@ jobs:
         known-hosts: ${{ secrets.known_hosts }}
 
     - run: |
-        rsync -chaviP --stats --no-times --no-perms \
+        rsync -chaviP --delete --stats --no-times --no-perms \
           -e 'ssh -i ~/.ssh/deploy-wpengine' \
+          --exclude force-strong-passwords/
+          --exclude mu-plugin.php
+          --exclude slt-force-strong-passwords.php
+          --exclude wpe-cache-plugin/
+          --exclude wpe-cache-plugin.php
+          --exclude wpe-wp-sign-on-plugin
+          --exclude wpe-wp-sign-on-plugin.php
+          --exclude wpengine-common/
+          --exclude wpengine-security-auditor.php
           wp-content/mu-plugins/ "${{ inputs.env_install }}@${{ inputs.env_ssh_host }}:/sites/${{ inputs.env_install }}/wp-content/mu-plugins"
