@@ -23,4 +23,4 @@ jobs:
 
     - run: npm install -g wrangler
     - name: wranger kv key put
-      run: CLOUDFLARE_API_TOKEN=${{ secrets.cloudflare_api_token }} wrangler kv key put "${{ inputs.install }}" "${{ inputs.value }}" --namespace-id="${{ secrets.cloudflare_deploy_storage_id }}" --remote
+      run: CLOUDFLARE_API_TOKEN=${{ secrets.cloudflare_api_token }} wrangler kv key put  --namespace-id="${{ secrets.cloudflare_deploy_storage_id }}" --remote "${{ inputs.install }}" "${{ inputs.value }}"
