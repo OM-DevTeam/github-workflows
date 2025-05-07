@@ -6,6 +6,9 @@ on:
       install:
         type: string
         required: true
+      value:
+        type: string
+        required: true
     secrets:
       cloudflare_deploy_storage_id:
         required: true
@@ -19,4 +22,4 @@ jobs:
     steps:
 
     - run: npm install -g wrangler
-    - run: CLOUDFLARE_API_TOKEN=${{ secrets.cloudflare_api_token }} wrangler kv key put "${{ inputs.install }}" "${{ github.ref_name }}" --namespace-id="${{ secrets.cloudflare_deploy_storage_id }}"
+    - run: CLOUDFLARE_API_TOKEN=${{ secrets.cloudflare_api_token }} wrangler kv key put "${{ inputs.install }}" "${{ inputs.value }}" --namespace-id="${{ secrets.cloudflare_deploy_storage_id }}"
