@@ -1,0 +1,22 @@
+name: Register deployment
+
+on: 
+  workflow_call:
+    inputs:
+      install:
+        type: string
+        required: true
+    secrets:
+      cloudflare_deploy_storage_id:
+        required: true
+      cloudflare_api_token:
+        required: true
+
+jobs:
+
+  register-deployment:
+    runs-on: ubuntu-latest
+    steps:
+
+    - run: npm install -g wrangler
+    - run: CLOUDFLARE_API_TOKEN=${{ secrets.cloudflare_api_token }} wrangler kv key put "${{ inputs.install }}" "${{ github.ref_name }}" --namespace-id="${{ secrets.cloudflare_deploy_storage_id }}"
