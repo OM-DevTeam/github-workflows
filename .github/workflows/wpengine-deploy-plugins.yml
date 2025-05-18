@@ -20,6 +20,8 @@ on:
         required: true
       wpengine_ssh_key_private:
         required: true
+      composer_auth_json:
+        required: false
 
 jobs:
 
@@ -61,7 +63,7 @@ jobs:
     - name: Install Composer dependencies
       if: ${{ inputs.composer }}
       run: |
-        echo '${{ secrets.COMPOSER_AUTH_JSON }}' > auth.json
+        echo '${{ secrets.composer_auth_json }}' > auth.json
         composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
         rm auth.json
 
