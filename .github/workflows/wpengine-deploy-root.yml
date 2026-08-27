@@ -65,4 +65,6 @@ jobs:
           --exclude /package-lock.json \
           --exclude /patches.lock.json \
           --exclude /patches/ \
+          --exclude /CLAUDE.md \
+          --exclude /.claude/ \
           ./ "${{ inputs.env_install }}@${{ inputs.env_ssh_host }}:/sites/${{ inputs.env_install }}/"
